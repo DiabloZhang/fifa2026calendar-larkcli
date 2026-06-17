@@ -26,16 +26,18 @@ lark-cli auth status
 
 ## 直接运行
 
-不全局安装，直接用 `npx`：
+推荐直接从 GitHub 运行，不依赖 npm 发包：
 
 ```bash
-npx fifa2026calendar-larkcli install
+npx github:DiabloZhang/fifa2026calendar-larkcli install --dry-run
+npx github:DiabloZhang/fifa2026calendar-larkcli install
 ```
 
-本地开发：
+也可以先拉到本地再执行：
 
 ```bash
-npm install
+git clone https://github.com/DiabloZhang/fifa2026calendar-larkcli.git
+cd fifa2026calendar-larkcli
 node src/cli.js install
 ```
 
@@ -75,3 +77,4 @@ fifa2026calendar-larkcli install --replace-existing --yes
 - 本工具每次运行都会重新抓取线上页面；不会读取本地缓存结果。
 - 默认不会自动删除已有同名日历，避免误删。若你想覆盖重建，请显式传 `--replace-existing --yes`。
 - 数据源当前使用 Wikipedia 2026 世界杯各小组页、淘汰赛页与决赛页原始 wikitext。
+- 如果未来补发 npm 包，再额外支持 `npx fifa2026calendar-larkcli install`。
