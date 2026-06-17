@@ -1,0 +1,26 @@
+<section begin="R32-1" />{{#invoke:football box|main
+|date={{Start date|2026|6|28}}
+|time=12:00&nbsp;p.m. [[UTC−07:00|UTC−7]]
+|team1=<!--{{#invoke:flag|fb-rt|}}-->Runner-up Group A
+|score={{score link|2026 FIFA World Cup knockout stage#Runner-up Group A vs Runner-up Group B|Match 73}}
+|team2=<!--{{#invoke:flag|fb|}}-->Runner-up Group B
+|stadium=[[SoFi Stadium]], [[Inglewood, California|Inglewood]]
+}}<section end="R32-1" />
+
+<section begin="R32-3" />{{#invoke:football box|main
+|date={{Start date|2026|6|29}}
+|time=4:30&nbsp;p.m. [[UTC−04:00|UTC−4]]
+|team1=<!--{{#invoke:flag|fb-rt|}}-->Winner Group E
+|score={{score link|2026 FIFA World Cup knockout stage#Winner Group E vs 3rd Group A/B/C/D/F|Match 74}}
+|team2=<!--{{#invoke:flag|fb|}}-->3rd Group A/B/C/D/F
+|stadium=[[Gillette Stadium]], [[Foxborough, Massachusetts|Foxborough]]
+}}<section end="R32-3" />
+
+<section begin="R32-7" />{{#invoke:football box|main
+|date={{Start date|2026|6|30}}
+|time=7:00&nbsp;p.m. [[UTC−06:00|UTC−6]]
+|team1=<!--{{#invoke:flag|fb-rt|}}-->Winner Group A
+|score={{score link|2026 FIFA World Cup knockout stage#Winner Group A vs 3rd Group C/E/F/H/I|Match 79}}
+|team2=<!--{{#invoke:flag|fb|}}-->3rd Group C/E/F/H/I
+|stadium=[[Estadio Azteca]], [[Mexico City]]
+}}<section end="R32-7" />

@@ -1,0 +1,16 @@
+{
+  "name": "fifa2026calendar-larkcli",
+  "version": "0.1.0",
+  "description": "Use lark-cli to create a live 2026 World Cup calendar in Feishu.",
+  "type": "module",
+  "bin": {
+    "fifa2026calendar-larkcli": "./src/cli.js"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT"
+}

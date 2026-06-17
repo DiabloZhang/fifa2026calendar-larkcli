@@ -1,0 +1,17 @@
+<section begin=A1 />{{#invoke:football box|main
+|date={{Start date|2026|6|11}}
+|time=1:00&nbsp;p.m. [[UTC−06:00|UTC−6]]
+|team1={{#invoke:flag|fb-rt|MEX}}
+|score={{score link|2026 FIFA World Cup Group A#Mexico vs South Africa|2–0}}
+|team2={{#invoke:flag|fb|RSA}}
+|stadium=[[Estadio Azteca]], [[Mexico City]]
+}}<section end=A1 />
+
+<section begin=A2 />{{#invoke:football box|main
+|date={{Start date|2026|6|11}}
+|time=8:00&nbsp;p.m. [[UTC−06:00|UTC−6]]
+|team1={{#invoke:flag|fb-rt|KOR}}
+|score={{score link|2026 FIFA World Cup Group A#South Korea vs Czech Republic|2–1}}
+|team2={{#invoke:flag|fb|CZE}}
+|stadium=[[Estadio Akron]], [[Zapopan]]
+}}<section end="A2" />
