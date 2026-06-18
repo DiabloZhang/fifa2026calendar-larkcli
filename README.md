@@ -33,6 +33,19 @@ npx github:DiabloZhang/fifa2026calendar-larkcli install --dry-run
 npx github:DiabloZhang/fifa2026calendar-larkcli install
 ```
 
+如果你想给朋友一个更低门槛的一键入口，可以直接用：
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/DiabloZhang/fifa2026calendar-larkcli/main/install.sh | bash
+```
+
+这个脚本会：
+
+- 检查是否已安装 `Node.js` / `npm`
+- 自动安装 `lark-cli`（若本机缺失）
+- 提示先完成 `lark-cli` 初始化与授权
+- 自动执行世界杯日历导入
+
 也可以先拉到本地再执行：
 
 ```bash
