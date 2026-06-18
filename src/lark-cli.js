@@ -3,6 +3,28 @@ import { promisify } from "node:util";
 
 const execFileAsync = promisify(execFile);
 
+export async function ensureLarkCliAvailable() {
+  try {
+    await execFileAsync("lark-cli", ["auth", "--help"], {
+      encoding: "utf8",
+      maxBuffer: 2 * 1024 * 1024
+    });
+  } catch (error) {
+    if (error?.code === "ENOENT") {
+      throw new Error(
+        [
+          "未检测到 lark-cli，请先安装并配置飞书 CLI。",
+          "GitHub: https://github.com/larksuite/cli",
+          "安装命令: npm install -g @larksuite/cli",
+          "配置命令: lark-cli config init",
+          "授权命令: lark-cli auth login --domain calendar"
+        ].join("\n")
+      );
+    }
+    throw error;
+  }
+}
+
 export async function runLarkCli(args, { input } = {}) {
   const { stdout, stderr } = await execFileAsync("lark-cli", args, {
     encoding: "utf8",

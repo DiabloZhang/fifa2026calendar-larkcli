@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { installCalendar } from "./install.js";
+import { ensureLarkCliAvailable } from "./lark-cli.js";
 
 async function main() {
   const { command, options } = parseArgs(process.argv.slice(2));
@@ -9,6 +10,8 @@ async function main() {
     process.exitCode = 1;
     return;
   }
+
+  await ensureLarkCliAvailable();
 
   const result = await installCalendar({
     ...options,
