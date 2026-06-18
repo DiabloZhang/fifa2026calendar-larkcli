@@ -72,6 +72,12 @@ fifa2026calendar-larkcli install --replace-existing --yes
 - 描述：
   - 阶段、场馆、来源页面、抓取时间
 
+## 导入效果
+
+导入完成后，飞书里会生成一个名为 `世界杯2026赛程` 的个人日历，效果如下：
+
+![飞书世界杯日历效果](./docs/feishu-calendar-screenshot.png)
+
 ## 注意
 
 - 本工具每次运行都会重新抓取线上页面；不会读取本地缓存结果。
