@@ -3,14 +3,17 @@ import { extractMatches } from "./parser.js";
 import { fetchTournamentPages } from "./wikitext.js";
 
 export async function installCalendar(options) {
+  const progress = options.onProgress ?? (() => {});
   await ensureUserCalendarScopes();
 
+  progress({ type: "status", message: "正在抓取最新世界杯赛程..." });
   const pages = await fetchTournamentPages();
   const matches = Object.values(pages)
     .flatMap((page) => extractMatches(page.key, page.text))
     .sort((a, b) => Number(a.startTime.timestamp) - Number(b.startTime.timestamp));
 
   if (options.dryRun) {
+    progress({ type: "status", message: `抓取完成，预览 ${matches.length} 场比赛。` });
     return {
       matchesCount: matches.length,
       sample: matches.slice(0, 5)
@@ -38,9 +41,22 @@ export async function installCalendar(options) {
   if (!calendarId) {
     throw new Error("Failed to create calendar: missing calendar_id in lark-cli response.");
   }
+  progress({
+    type: "calendar_created",
+    calendarId,
+    calendarName: options.calendarName,
+    total: matches.length
+  });
 
-  for (const match of matches) {
+  for (let index = 0; index < matches.length; index += 1) {
+    const match = matches[index];
     await createEvent(calendarId, match);
+    progress({
+      type: "event_progress",
+      current: index + 1,
+      total: matches.length,
+      summary: match.summary
+    });
   }
 
   return {

@@ -10,7 +10,10 @@ async function main() {
     return;
   }
 
-  const result = await installCalendar(options);
+  const result = await installCalendar({
+    ...options,
+    onProgress: createConsoleProgress(options)
+  });
   if (options.dryRun) {
     process.stdout.write(`${JSON.stringify(result, null, 2)}\n`);
     return;
@@ -32,7 +35,7 @@ async function main() {
 
 function parseArgs(argv) {
   const options = {
-    calendarName: "世界杯2026赛程",
+    calendarName: "世界杯2026赛程 ⚽️",
     permissions: "private",
     dryRun: false,
     replaceExisting: false,
@@ -68,12 +71,47 @@ function printUsage() {
   fifa2026calendar-larkcli install [options]
 
 Options:
-  --calendar-name <name>     Default: 世界杯2026赛程
+  --calendar-name <name>     Default: 世界杯2026赛程 ⚽️
   --permissions <value>      private | show_only_free_busy | public
   --dry-run                  Fetch and parse only, do not write to Feishu
   --replace-existing         Delete the same-named calendar before import
   --yes                      Required with --replace-existing
 `);
+}
+
+function createConsoleProgress(options) {
+  if (options.dryRun) {
+    return (event) => {
+      if (event.type === "status") {
+        process.stderr.write(`${event.message}\n`);
+      }
+    };
+  }
+
+  let lastLineLength = 0;
+  return (event) => {
+    if (event.type === "status") {
+      process.stderr.write(`${event.message}\n`);
+      return;
+    }
+
+    if (event.type === "calendar_created") {
+      process.stderr.write(
+        `日历创建成功：${event.calendarName} (${event.calendarId})，准备导入 ${event.total} 场比赛。\n`
+      );
+      return;
+    }
+
+    if (event.type === "event_progress") {
+      const line = `已导入「${options.calendarName}」${event.current}/${event.total}：${event.summary}`;
+      const padded = line.padEnd(lastLineLength, " ");
+      lastLineLength = line.length;
+      process.stderr.write(`\r${padded}`);
+      if (event.current === event.total) {
+        process.stderr.write("\n");
+      }
+    }
+  };
 }
 
 main().catch((error) => {
