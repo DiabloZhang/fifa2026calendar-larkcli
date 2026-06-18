@@ -46,33 +46,6 @@ curl -fsSL https://raw.githubusercontent.com/DiabloZhang/fifa2026calendar-larkcl
 - 提示先完成 `lark-cli` 初始化与授权
 - 自动执行世界杯日历导入
 
-如果你想把它分发成给朋友直接执行的 macOS 单文件，可先在本地打包：
-
-```bash
-npm install
-npm run build:macos
-```
-
-产物路径：
-
-```bash
-./dist/fifa2026calendar-larkcli-macos
-```
-
-打包后的使用方式：
-
-```bash
-chmod +x ./dist/fifa2026calendar-larkcli-macos
-./dist/fifa2026calendar-larkcli-macos install --dry-run
-./dist/fifa2026calendar-larkcli-macos install
-```
-
-说明：
-
-- 这是一个 macOS arm64 单文件二进制，适合 Apple Silicon 机器直接执行
-- 仍然需要本机提前装好并授权 `lark-cli`
-- 如果只是想最低维护成本地分发，`install.sh` 依然是更通用的入口
-
 也可以先拉到本地再执行：
 
 ```bash

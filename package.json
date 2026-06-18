@@ -6,24 +6,11 @@
   "bin": {
     "fifa2026calendar-larkcli": "./src/cli.js"
   },
-  "pkg": {
-    "scripts": [
-      "dist/cli-bundle.cjs"
-    ]
-  },
   "scripts": {
-    "test": "node --test",
-    "build:bundle": "esbuild src/bundle.js --bundle --platform=node --format=cjs --target=node22 --outfile=dist/cli-bundle.cjs --banner:js='#!/usr/bin/env node'",
-    "build:macos": "npm run build:bundle && npx pkg dist/cli-bundle.cjs --targets node18-macos-arm64 --output dist/fifa2026calendar-larkcli-macos --no-bytecode --public",
-    "build:macos-sea": "node scripts/build-macos-sea.mjs"
+    "test": "node --test"
   },
   "engines": {
     "node": ">=20"
   },
-  "license": "MIT",
-  "devDependencies": {
-    "esbuild": "^0.28.1",
-    "pkg": "^5.8.1",
-    "postject": "^1.0.0-alpha.6"
-  }
+  "license": "MIT"
 }
