@@ -15,18 +15,26 @@ export async function runLarkCli(args, { input } = {}) {
   return stdout.trim() ? JSON.parse(stdout) : {};
 }
 
+function unwrapData(result) {
+  if (result && typeof result === "object" && result.data && typeof result.data === "object") {
+    return result.data;
+  }
+  return result;
+}
+
 export async function authStatus() {
   return runLarkCli(["auth", "status"]);
 }
 
 export async function searchCalendars(query) {
-  return runLarkCli(
+  const result = await runLarkCli(
     ["calendar", "calendars", "search", "--as", "user", "--json", "--data", JSON.stringify({ query })]
   );
+  return unwrapData(result);
 }
 
 export async function createCalendar({ summary, description, permissions }) {
-  return runLarkCli([
+  const result = await runLarkCli([
     "calendar",
     "calendars",
     "create",
@@ -36,10 +44,11 @@ export async function createCalendar({ summary, description, permissions }) {
     "--data",
     JSON.stringify({ summary, description, permissions })
   ]);
+  return unwrapData(result);
 }
 
 export async function deleteCalendar(calendarId) {
-  return runLarkCli([
+  const result = await runLarkCli([
     "calendar",
     "calendars",
     "delete",
@@ -50,10 +59,11 @@ export async function deleteCalendar(calendarId) {
     calendarId,
     "--yes"
   ]);
+  return unwrapData(result);
 }
 
 export async function createEvent(calendarId, event) {
-  return runLarkCli([
+  const result = await runLarkCli([
     "calendar",
     "events",
     "create",
@@ -73,4 +83,5 @@ export async function createEvent(calendarId, event) {
       visibility: "default"
     })
   ]);
+  return unwrapData(result);
 }
